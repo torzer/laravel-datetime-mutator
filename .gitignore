@@ -4,6 +4,8 @@ npm-debug.log
 
 composer.lock
 
+nbproject/
+
 # Laravel 4 specific
 bootstrap/compiled.php
 app/storage/
@@ -20,3 +22,4 @@ Homestead.json
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
+/nbproject/private/
