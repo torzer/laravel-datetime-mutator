@@ -61,8 +61,8 @@ class MyClass extends Model {
 
 At the example above, the fields `start_date` and `finish_date` gonna be handle with the DateTime function of Laravel Eloquent Model,
 but they arecreated from format `d/m/Y` set in `from` key of the `$mapDateTimeMutator` array,
-getting as return/setAttribute of the field a string formated using `to` key.
+getting as return/setAttribute of the field a string formated using the `to` key.
 
-The `approved_at` field in `$dates` array is still handled from framework.
+The `approved_at` field in `$dates` array is still handled with the default behavior of the framework.
 
 **Note** that the input value of this fields - `start_date` and `finish_date`, must be in `d/m/Y` format.
