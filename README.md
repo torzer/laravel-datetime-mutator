@@ -31,3 +31,38 @@ class MyClass extends Model {
     use MapDateTimeMutator;
 ..
 ```
+
+Set the date fields as you would do in _array $dates_, but to those dates or timestamps that need to be transformed
+from one format to another, use the array `$mapDateTimeMutator` with the
+name of the date field as the array key and an array mapping `from` and `to` formats:
+
+```php
+<?php
+
+use Torzer\Common\Traits\MapDateTimeMutator;
+
+class MyClass extends Model {
+
+    use MapDateTimeMutator;
+
+    protected $mapDateTimeMutator = [
+        'start_date' => ['from' => 'd/m/Y', 'to' => 'Y-m-d'],
+        'finish_date' => ['from' => 'd/m/Y', 'to' => 'Y-m-d']
+    ];
+
+    protected $dates = [
+        'approved_at', 'start_date', 'finish_date'
+    ];
+
+    ...
+
+
+```
+
+At the example above, the fields `start_date` and `finish_date` gonna be handle with the DateTime function of Laravel Eloquent Model,
+but they arecreated from format `d/m/Y` set in `from` key of the `$mapDateTimeMutator` array,
+getting as return/setAttribute of the field a string formated using `to` key.
+
+The `approved_at` field in `$dates` array is still handled from framework.
+
+**Note** that the input value of this fields - `start_date` and `finish_date`, must be in `d/m/Y` format.
