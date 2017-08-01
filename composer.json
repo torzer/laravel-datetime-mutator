@@ -1,0 +1,25 @@
+{
+    "name": "torzer/laravel-datetime-mutator",
+    "description": "Laravel traits mutators to help Date Time manipulation on Eloquent Models",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "torzer",
+            "email": "torzer@torzer.com"
+        },
+        {
+            "name": "Ademir Mazer Junior",
+            "email": "mazer@torzer.com"
+        },
+        {
+            "name": "Oseas Tormen",
+            "email": "tormen@torzer.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Torzer\\Common\\": "src/"
+        }
+    }
+}
