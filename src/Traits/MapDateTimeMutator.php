@@ -14,7 +14,7 @@ trait MapDateTimeMutator
     }
 
     private function isMutatorMappedDateTime($key) {
-        return array_key_exists( $this->getMapDateTimeMutatorArray($key) );
+        return array_key_exists($key, $this->getMapDateTimeMutatorArray());
     }
 
     private function getMapDateTimeMutator($key) {
