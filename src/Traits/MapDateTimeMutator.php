@@ -64,9 +64,12 @@ trait MapDateTimeMutator
 
         $value = $this->asDateTime($value);
 
-        $value = $this->setDateOnlyMongo($value, $formats);
-
         $this->setDateFormat($originalDateFormat);
+
+        if ($this instanceof \Jenssegers\Mongodb\Eloquent\Model)
+        {
+            return $this->setDateOnlyMongo($value, $formats);
+        }
 
         return $value->format($formats['to']);
     }
