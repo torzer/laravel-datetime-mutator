@@ -17,7 +17,7 @@ class MapDateTimeMutatorTest extends TestCase
         Config::set('app.timezone', 'America/Sao_Paulo');
     }
 
-    public function testDeafultDateTimeMutatorFromDMYtoYMD()
+    public function testDeafult_DateTimeMutatorFromDMYtoYMD()
     {
 
         $model = new DateTimeModel();
@@ -30,7 +30,7 @@ class MapDateTimeMutatorTest extends TestCase
         $this->assertEquals($date, $model->started_at);
     }
 
-    public function testDeafultDateTimeMutatorMongoDBFromDMYtoYMD()
+    public function testMongo_DateTimeMutatorFromDMYtoYMD_DateOnly()
     {
 
         $model = new DateTimeMongoModel();
@@ -39,7 +39,7 @@ class MapDateTimeMutatorTest extends TestCase
 
         $date = \Carbon\Carbon::createFromFormat('d/m/Y', '20/10/2017', 'UTC')->setTime(0, 0, 0);
 
-
         $this->assertEquals($date, $model->started_at);
     }
+
 }
