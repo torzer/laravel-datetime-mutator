@@ -19,4 +19,6 @@ class DateTimeMongoModel extends Model
         ],
     ];
 
+    protected $connection = 'mongodb';
+
 }
