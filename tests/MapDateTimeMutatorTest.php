@@ -23,12 +23,11 @@ class MapDateTimeMutatorTest extends TestCase
         $model = new DateTimeModel();
 
         $model->started_at = '20/10/2017';
-        $model->created_at = \Carbon\Carbon::now();
 
-        echo "Model in MapDateTimeMutator Test";
-        dump($model->started_at);
-        dump($model->created_at);
+        $date = \Carbon\Carbon::createFromFormat('d/m/Y', '20/10/2017', 'UTC')->setTime(0, 0, 0);
 
+
+        $this->assertEquals($date, $model->started_at);
     }
 
     public function testDeafultDateTimeMutatorMongoDBFromDMYtoYMD()
@@ -38,8 +37,9 @@ class MapDateTimeMutatorTest extends TestCase
 
         $model->started_at = '20/10/2017';
 
-        echo "Mongo Model in MapDateTimeMutator Test";
-        dump($model->started_at);
+        $date = \Carbon\Carbon::createFromFormat('d/m/Y', '20/10/2017', 'UTC')->setTime(0, 0, 0);
 
+
+        $this->assertEquals($date, $model->started_at);
     }
 }
