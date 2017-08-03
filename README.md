@@ -66,3 +66,35 @@ getting as return/setAttribute of the field a string formated using the `to` key
 The `approved_at` field in `$dates` array is still handled with the default behavior of the framework.
 
 **Note** that the input value of this fields - `start_date` and `finish_date`, must be in `d/m/Y` format.
+
+### Using Jenssegers/MongoDB
+
+If you are using Jenssegers/MongoDB driver to persist date only, this trait can help you to handle
+MongoDB timestamp field type.
+
+To ensure a date gonna be saved in UTC timezone at hour 00:00:00, you must add a `date-only`
+setting in array `$mapDateTimeMutator`:
+
+```php
+<?php
+
+use Torzer\Common\Traits\MapDateTimeMutator;
+
+class MyClass extends Jenssegers\Mongodb\Eloquent\Model {
+
+    use MapDateTimeMutator;
+
+    protected $mapDateTimeMutator = [
+        'start_date' => ['from' => 'd/m/Y', 'to' => 'Y-m-d'],
+        'finish_date' => ['from' => 'd/m/Y', 'to' => 'Y-m-d'],
+        'date-only' => true,
+    ];
+
+    protected $dates = [
+        'approved_at', 'start_date', 'finish_date'
+    ];
+
+    ...
+
+
+```
